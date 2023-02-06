@@ -1,0 +1,50 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head> 
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<nav id="navbar">
+				<div><img src="/logoo.jpg" width="100px"></div>
+				<div id ="menu">
+				
+			       <a href="/inicio"> inicio </a>
+				   <a href="/menu"> menu </a>
+				   <a href="/contacto"> contacto </a>
+				
+				</div>
+			</nav>
+		</header>
+
+		<slot />
+	</body>
+</html>
+<style>
+          #navbar {
+		  display: flex;
+		  justify-content: space-between;
+		  margin: 20px;
+	      
+		  }
+		  #menu {
+		  display: flex;
+		 justify-content: center;
+		 gap: 20px;
+		 }
+		 div {
+		 list-style-image: center;
+
+</style>
