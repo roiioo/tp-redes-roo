@@ -8,43 +8,71 @@ const { title } = Astro.props as Props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head> 
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
+	<head>
+		<>
+			<meta charset="UTF-8" />
+			<meta name="viewport" content="" />
+			<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+			<meta name="generator" content={Astro.generator} />
+			<title>{title}</title>
+		</>
+	</head><body>
 		<header>
 			<nav id="navbar">
-				<div><img src="/logoo.jpg" width="100px"></div>
-				<div id ="menu">
-				
-			       <a href="/inicio"> inicio </a>
-				   <a href="/menu"> menu </a>
-				   <a href="/contacto"> contacto </a>
-				
+				<div><img src="/logoo.jpg" width="100px" /></div>
+				<div id="menu">menu</div>
+				<div id="burguer">
+					<button class="relative group">
+						<div
+							class="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md"
+						>
+							<div
+								class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden"
+							>
+								<div
+									class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:rotate-[42deg]"
+								>
+								</div>
+								<div
+									class="bg-white h-[2px] w-1/2 rounded transform transition-all duration-300 group-focus:-translate-x-10"
+								>
+								</div>
+								<div
+									class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg]"
+								>
+								</div>
+							</div>
+						</div>
+					</button>
 				</div>
 			</nav>
 		</header>
 
 		<slot />
+		<style>
+			#menu {
+				display: none;
+			}
+
+			#navbar {
+				display: flex;
+				justify-content: space-between;
+				margin: 20px;
+			}
+
+			div {
+				list-style-image: center;
+			}
+			@media (min-width: 768px) {
+				#burguer {
+					display: none;
+				}
+				#menu {
+					display: flex;
+					justify-content: center;
+					gap: 20px;
+				}
+			}
+		</style>
 	</body>
 </html>
-<style>
-          #navbar {
-		  display: flex;
-		  justify-content: space-between;
-		  margin: 20px;
-	      
-		  }
-		  #menu {
-		  display: flex;
-		 justify-content: center;
-		 gap: 20px;
-		 }
-		 div {
-		 list-style-image: center;
-
-</style>
