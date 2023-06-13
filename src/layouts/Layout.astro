@@ -16,11 +16,11 @@ const { title } = Astro.props as Props;
 			<meta name="generator" content={Astro.generator} />
 			<title>{title}</title>
 		</>
-	</head><body>
+	</head>
+	<body>
 		<header>
 			<nav id="navbar">
 				<div><img src="/logoo.jpg" width="100px" /></div>
-				<div id="menu">menu</div>
 				<div id="burguer">
 					<button class="relative group">
 						<div
@@ -45,34 +45,57 @@ const { title } = Astro.props as Props;
 						</div>
 					</button>
 				</div>
+				<div id="menu">
+					<a href="SobreMi">SobreMi</a>
+					<a href="Contacto">Contacto</a>
+				</div>
 			</nav>
 		</header>
-
-		<slot />
+		<div class="contenedor">
+			<div class="content">
+				<slot />
+			</div>
+		</div>
 		<style>
 			#menu {
 				display: none;
+				width: 100%;
+				flex-direction: column;
 			}
 
 			#navbar {
 				display: flex;
+				flex-wrap: wrap; /* especifica si fluye en una lina, en este caso fluye en varia linea */
 				justify-content: space-between;
 				margin: 20px;
 			}
 
-			div {
-				list-style-image: center;
-			}
 			@media (min-width: 768px) {
+				#menu {
+					flex-direction: row;
+					display: flex;
+					width: 50%;
+				}
 				#burguer {
 					display: none;
 				}
-				#menu {
+				#navbar {
 					display: flex;
-					justify-content: center;
 					gap: 20px;
 				}
 			}
 		</style>
+		<script is:inline>
+			const burguer = document.getElementById("burguer");
+			function burguerClick() {
+				const menu = document.getElementById("menu");
+				if (window.getComputedStyle(menu).display === "none") {
+					menu.style.display = "flex";
+				} else {
+					menu.style.display = "none";
+				}
+			}
+			burguer.addEventListener("click", burguerClick);
+		</script>
 	</body>
 </html>
