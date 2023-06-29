@@ -5,18 +5,71 @@ import Card from "../components/Card.astro";
 
 <Layout title="mi pagina">
 	<h1>Rocio streitenberger</h1>
+	<main class=" flex flex-col justify-items-center">
 
 	<p><strong>Estos son mis contactos</strong></p>
-	<form>
-	<div class="columna">
-	<label form="Nombre">Nombre</label>
-	<input type="text" id="Nombre"/>
-	<label form="Apellido">Apellido</label>
-	<input type="text" id="Apellido"/>
-	<label form=" email">Email</label>
-	<input type="text" id="Email"/>
-	<input type="submit"/>
-	</form>
+<div class="form-container">
+	<form method="post" class="columna" id="contact">
+		<div class="fila">
+			<div class="columna">
+				<label for="Nombre"> Nombre </label>
+				<input type="tetx" id="Nombre" name="Nombre">
+			</div>
+		<div class="columna">
+			<label for="Apellido"> Apellido </label>
+				<input type="tetx" id="Apellido" name="Apellido">
+		</div>
+		<div class="columna">
+			<label for="Email"> Email </label>
+				<input type="tetx" id="Email" name="Email">
+				</div>
+				<div class="columna">
+			<label for="Mensaje"> Mensaje </label>
+				<input type="tetx" id="Mensaje" name="Mesaje">
+				</div>
+				
+				<input type="submit"/>
+		</form>
+	</div>
+	</main>
+
+<style>
+	.for-container{
+		max-width: 480px;
+		display: flex;
+		justify-content: center;
+		}
+	#formulario {
+	width: 100%;
+	}
+	.columna {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	gap: 8px;
+	}
+	.fila {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+	}
+</style>
 </Layout>
 
-<style></style>
+<script is:inline>
+const form = document.getElementById("contact");
+form.addEventListener("submit", (event) => {
+    // stop form submission
+    event.preventDefault();
+
+    const name = form.elements.nombre;
+    const apellido = form.elements["apellido"];
+    if (name.value === "") {
+        name.style.borderColor = "red";
+        name.style.borderWidth = "1px";
+		alert("pone algo o sos gay");
+    } else {
+        alert("se envio" + name.value + " " + apellido.value);
+    }
+});
+</script>
