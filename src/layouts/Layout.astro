@@ -46,8 +46,8 @@ const { title } = Astro.props as Props;
 					</button>
 				</div>
 				<div id="menu">
-					<a href="SobreMi">SobreMi</a>
-					<a href="Contacto">Contacto</a>
+					<a href="sobremi">Sobre Mi</a>
+					<a href="contacto">Contacto</a>
 				</div>
 			</nav>
 		</header>
@@ -57,6 +57,10 @@ const { title } = Astro.props as Props;
 			</div>
 		</div>
 		<style>
+			body {
+				background-color: #AF7AC5;
+				color: black;
+			}
 			#menu {
 				display: none;
 				width: 100%;
@@ -74,14 +78,14 @@ const { title } = Astro.props as Props;
 				#menu {
 					flex-direction: row;
 					display: flex;
-					width: 50%;
+					gap: 20px;
+					width: auto;
 				}
 				#burguer {
 					display: none;
 				}
 				#navbar {
 					display: flex;
-					gap: 20px;
 				}
 			}
 		</style>
