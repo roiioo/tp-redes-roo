@@ -5,71 +5,93 @@ import Card from "../components/Card.astro";
 
 <Layout title="mi pagina">
 	<h1>Rocio streitenberger</h1>
-	<main class=" flex flex-col justify-items-center">
-
-	<p><strong>Estos son mis contactos</strong></p>
-<div class="form-container">
-	<form method="post" class="columna" id="contact">
-		<div class="fila">
-			<div class="columna">
-				<label for="Nombre"> Nombre </label>
-				<input type="tetx" id="Nombre" name="Nombre">
-			</div>
-		<div class="columna">
-			<label for="Apellido"> Apellido </label>
-				<input type="tetx" id="Apellido" name="Apellido">
+	<main class="flex flex-col justify-items-center">
+		<p><strong>Estos son mis contactos</strong></p>
+		<div id="logos">
+			<a href="https://www.instagram.com/">
+				<img src="logoinsta.jpg" />
+			</a>
+			<a href="https://twitter.com/login?lang=es">
+				<img src="download.png" />
+			</a>
 		</div>
-		<div class="columna">
-			<label for="Email"> Email </label>
-				<input type="tetx" id="Email" name="Email">
+
+		<div class="form-container">
+			<form method="post" class="columna" id="contact">
+				<div class="fila">
+					<div class="columna">
+						<label for="nombre"> Nombre</label>
+						<input type="text" id="nombre" name="nombre" />
+					</div>
+					<div class="columna">
+						<label for="apellido"> Apellido</label>
+						<input type="text" id="apellido" name="apellido" />
+					</div>
 				</div>
 				<div class="columna">
-			<label for="Mensaje"> Mensaje </label>
-				<input type="tetx" id="Mensaje" name="Mesaje">
+					<label for="email"> Email</label>
+					<input type="text" id="email" name="email" />
 				</div>
-				
-				<input type="submit"/>
-		</form>
-	</div>
+				<div class="columna">
+					<label for="mensaje"> Mensaje</label>
+					<input type="text" id="mensaje" name="mensaje" />
+				</div>
+
+				<input type="submit" />
+			</form>
+		</div>
+
+		<style>
+			.form-container {
+				max-width: 480px;
+				display: flex;
+				justify-content: center;
+			}
+			#formulario {
+				width: 100%;
+			}
+			.columna {
+				display: flex;
+				width: 100%;
+				flex-direction: column;
+				gap: 8px;
+			}
+			.fila {
+				display: flex;
+				flex-direction: row;
+				gap: 8px;
+			}
+			#logos {
+				display: flex;
+				margin: 20px;
+			}
+		</style>
 	</main>
 
-<style>
-	.for-container{
-		max-width: 480px;
-		display: flex;
-		justify-content: center;
-		}
-	#formulario {
-	width: 100%;
-	}
-	.columna {
-	display: flex;
-	width: 100%;
-	flex-direction: column;
-	gap: 8px;
-	}
-	.fila {
-	display: flex;
-	flex-direction: row;
-	gap: 8px;
-	}
-</style>
+	<script is:inline>
+		const form = document.getElementById("contact");
+		form.addEventListener("submit", (event) => {
+			// stop form submission
+			event.preventDefault();
+			let valido = true;
+			console.log(form.elements);
+			for (i = 0; i < form.elements.length; i = i + 1) {
+				const elementoActual = form.elements[i];
+				console.log(elementoActual);
+				if (
+					elementoActual.value === "" &&
+					elementoActual.type !== "submit" &&
+					elementoActual.id !== "mensaje"
+				) {
+					valido = false;
+					elementoActual.style.borderColor = "red";
+					elementoActual.style.borderWidth = "1px";
+				} else {
+					elementoActual.style.borderColor = "none";
+					elementoActual.style.borderWidth = "0px";
+				}
+			}
+			if (!valido) alert("completa todo no seas boludo");
+		});
+	</script>
 </Layout>
-
-<script is:inline>
-const form = document.getElementById("contact");
-form.addEventListener("submit", (event) => {
-    // stop form submission
-    event.preventDefault();
-
-    const name = form.elements.nombre;
-    const apellido = form.elements["apellido"];
-    if (name.value === "") {
-        name.style.borderColor = "red";
-        name.style.borderWidth = "1px";
-		alert("pone algo o sos gay");
-    } else {
-        alert("se envio" + name.value + " " + apellido.value);
-    }
-});
-</script>
