@@ -47,7 +47,7 @@ import Layout from "../layouts/Layout.astro";
 			Complete los campos
 
 			<button
-				id="CancelFallo"
+				id="cancelFallo"
 				type="reset"
 				value""cerrar"
 				class="via-violet-900"
@@ -85,12 +85,12 @@ import Layout from "../layouts/Layout.astro";
 </style>
 <script is:inline>
 const form = document.getElementById("contact");
-const popupFallo = document.getelementById("popupFallo");
+const popupFallo = document.getElementById("popupFallo");
 
 form.addEventListener("submit", (event) => {
 	// stop form submission
 	event.preventDefault();
-	const popover = document.getelementById("popover");
+	const popover = document.getElementById("popover");
 	let valido = true;
 	console.log(form.elements);
 	for (i = 0; i < form.elements.length; i = i + 1) {
