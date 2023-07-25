@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 ---
 
 <Layout title="mi pagina">
@@ -40,58 +39,81 @@ import Card from "../components/Card.astro";
 				<input type="submit" />
 			</form>
 		</div>
+		<button value="enviar
+		class=" via-violet-900" typr="submit">
+			Enviar
+		</button>
+		<dialog id="popupFallo">
+			Complete los campos
 
-		<style>
-			.form-container {
-				max-width: 480px;
-				display: flex;
-				justify-content: center;
-			}
-			#formulario {
-				width: 100%;
-			}
-			.columna {
-				display: flex;
-				width: 100%;
-				flex-direction: column;
-				gap: 8px;
-			}
-			.fila {
-				display: flex;
-				flex-direction: row;
-				gap: 8px;
-			}
-			#logos {
-				display: flex;
-				margin: 20px;
-			}
-		</style>
+			<button
+				id="CancelFallo"
+				type="reset"
+				value""cerrar"
+				class="via-violet-900"
+			>
+				cerrar
+			</button>
+		</dialog>
+		<div popover id="popover">Mensaje Exitoso</div>
 	</main>
-
-	<script is:inline>
-		const form = document.getElementById("contact");
-		form.addEventListener("submit", (event) => {
-			// stop form submission
-			event.preventDefault();
-			let valido = true;
-			console.log(form.elements);
-			for (i = 0; i < form.elements.length; i = i + 1) {
-				const elementoActual = form.elements[i];
-				console.log(elementoActual);
-				if (
-					elementoActual.value === "" &&
-					elementoActual.type !== "submit" &&
-					elementoActual.id !== "mensaje"
-				) {
-					valido = false;
-					elementoActual.style.borderColor = "red";
-					elementoActual.style.borderWidth = "1px";
-				} else {
-					elementoActual.style.borderColor = "none";
-					elementoActual.style.borderWidth = "0px";
-				}
-			}
-			if (!valido) alert("completa todo no seas boludo");
-		});
-	</script>
 </Layout>
+<style>
+	.form-container {
+		max-width: 480px;
+		display: flex;
+		justify-content: center;
+	}
+	#formulario {
+		width: 100%;
+	}
+	.columna {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		gap: 8px;
+	}
+	.fila {
+		display: flex;
+		flex-direction: row;
+		gap: 8px;
+	}
+	#logos {
+		display: flex;
+		margin: 20px;
+	}
+</style>
+<script is:inline>
+const form = document.getElementById("contact");
+const popupFallo = document.getelementById("popupFallo");
+
+form.addEventListener("submit", (event) => {
+	// stop form submission
+	event.preventDefault();
+	const popover = document.getelementById("popover");
+	let valido = true;
+	console.log(form.elements);
+	for (i = 0; i < form.elements.length; i = i + 1) {
+		const elementoActual = form.elements[i];
+		console.log(elementoActual);
+		if (
+			elementoActual.value === "" &&
+			elementoActual.type !== "submit" &&
+			elementoActual.id !== "mensaje"
+		) {
+			valido = false;
+			elementoActual.style.borderColor = "red";
+			elementoActual.style.borderWidth = "1px";
+		} else {
+			elementoActual.style.borderColor = "none";
+			elementoActual.style.borderWidth = "0px";
+		}
+	}
+
+	if (!valido) popupFallo.showModal();
+});
+const cancelFallo = document.getElementById("cancelFallo");
+cancelFallo.addEventListener("click", function () {
+	popupFallo.close();
+});
+</script>
