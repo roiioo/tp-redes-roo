@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="mi pagina">
+    <h1>Rocio streitenberger</h1>
+    <main class="flex flex-col justify-items-center">
+        <p><strong>Estos son mis contactos</strong></p>
+        <div id="logos">
+            <a href="https://www.instagram.com/">
+                <img src="logoinsta.jpg" />
+            </a>
+            <a href="https://twitter.com/login?lang=es">
+                <img src="download.png" />
+            </a>
+        </div>
+
+        <div class="form-container">
+            <form
+                action="https://formsubmit.co/streirocio@gmail.com"
+                method="post"
+                class="columna"
+                id="contact"
+            >
+                <div class="fila">
+                    <div class="columna">
+                        <label for="nombre"> Nombre</label>
+                        <input type="text" id="nombre" name="nombre" />
+                    </div>
+                    <div class="columna">
+                        <label for="apellido"> Apellido</label>
+                        <input type="text" id="apellido" name="apellido" />
+                    </div>
+                </div>
+                <div class="columna">
+                    <label for="email"> Email</label>
+                    <input type="text" id="email" name="email" />
+                </div>
+                <div class="columna">
+                    <label for="mensaje"> Mensaje</label>
+                    <input type="text" id="mensaje" name="mensaje" />
+                </div>
+
+                <input type="submit" />
+            </form>
+        </div>
+        <button value="enviar
+		class=" via-violet-900" typr="submit">
+            Enviar
+        </button>
+        <dialog id="popupFallo">
+            Complete los campos
+
+            <button
+                id="cancelFallo"
+                type="reset"
+                value""cerrar"
+                class="via-violet-900"
+            >
+                cerrar
+            </button>
+        </dialog>
+        <div popover id="popover">Mensaje Exitoso</div>
+    </main>
+</Layout>
+<style>
+    .form-container {
+        max-width: 480px;
+        display: flex;
+        justify-content: center;
+    }
+    #formulario {
+        width: 100%;
+    }
+    .columna {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .fila {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+    }
+    #logos {
+        display: flex;
+        margin: 20px;
+    }
+</style>
